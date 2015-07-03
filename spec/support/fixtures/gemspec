@@ -1,0 +1,13 @@
+Gem::Specification.new do |spec|
+  spec.name          = 'test_gem'
+  spec.version       = '%{version}'
+  spec.authors       = ['PrLog Test']
+  spec.email         = ['test@example.com']
+
+  spec.summary       = 'A gemspec to use in tests'
+  spec.homepage      = '%{homepage}'
+  spec.license       = 'MIT'
+
+  spec.files         = []
+  spec.require_paths = []
+end

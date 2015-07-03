@@ -1,3 +1,5 @@
 #!/usr/bin/env ruby
 
-require "pr_log"
+require 'pr_log'
+
+PrLog::Cli.start

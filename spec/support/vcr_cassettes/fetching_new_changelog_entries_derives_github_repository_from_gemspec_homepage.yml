@@ -1,0 +1,79 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/search/issues?per_page=1000&q=repo:tf/pr_log_test_fixture%20type:pr%20is:merged%20milestone:v1.1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 4.0.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Sat, 25 Jul 2015 15:25:34 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '30'
+      X-Ratelimit-Remaining:
+      - '26'
+      X-Ratelimit-Reset:
+      - '1437837991'
+      Cache-Control:
+      - no-cache
+      X-Oauth-Scopes:
+      - ''
+      X-Accepted-Oauth-Scopes:
+      - repo
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 584DDDAF:6937:705607F:55B3AA6E
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - a6882e5cd2513376cb9481dbcd83f3a2
+    body:
+      encoding: UTF-8
+      string: '{"total_count":1,"incomplete_results":false,"items":[{"url":"https://api.github.com/repos/tf/pr_log_test_fixture/issues/1","labels_url":"https://api.github.com/repos/tf/pr_log_test_fixture/issues/1/labels{/name}","comments_url":"https://api.github.com/repos/tf/pr_log_test_fixture/issues/1/comments","events_url":"https://api.github.com/repos/tf/pr_log_test_fixture/issues/1/events","html_url":"https://github.com/tf/pr_log_test_fixture/pull/1","id":93350470,"number":1,"title":"Add
+        a file to the repository","user":{"login":"tf","id":26554,"avatar_url":"https://avatars.githubusercontent.com/u/26554?v=3","gravatar_id":"","url":"https://api.github.com/users/tf","html_url":"https://github.com/tf","followers_url":"https://api.github.com/users/tf/followers","following_url":"https://api.github.com/users/tf/following{/other_user}","gists_url":"https://api.github.com/users/tf/gists{/gist_id}","starred_url":"https://api.github.com/users/tf/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/tf/subscriptions","organizations_url":"https://api.github.com/users/tf/orgs","repos_url":"https://api.github.com/users/tf/repos","events_url":"https://api.github.com/users/tf/events{/privacy}","received_events_url":"https://api.github.com/users/tf/received_events","type":"User","site_admin":false},"labels":[],"state":"closed","locked":false,"assignee":null,"milestone":{"url":"https://api.github.com/repos/tf/pr_log_test_fixture/milestones/1","html_url":"https://github.com/tf/pr_log_test_fixture/milestones/v1.1","labels_url":"https://api.github.com/repos/tf/pr_log_test_fixture/milestones/1/labels","id":1195509,"number":1,"title":"v1.1","description":"","creator":{"login":"tf","id":26554,"avatar_url":"https://avatars.githubusercontent.com/u/26554?v=3","gravatar_id":"","url":"https://api.github.com/users/tf","html_url":"https://github.com/tf","followers_url":"https://api.github.com/users/tf/followers","following_url":"https://api.github.com/users/tf/following{/other_user}","gists_url":"https://api.github.com/users/tf/gists{/gist_id}","starred_url":"https://api.github.com/users/tf/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/tf/subscriptions","organizations_url":"https://api.github.com/users/tf/orgs","repos_url":"https://api.github.com/users/tf/repos","events_url":"https://api.github.com/users/tf/events{/privacy}","received_events_url":"https://api.github.com/users/tf/received_events","type":"User","site_admin":false},"open_issues":0,"closed_issues":1,"state":"open","created_at":"2015-07-06T18:58:16Z","updated_at":"2015-07-21T18:48:48Z","due_on":null,"closed_at":null},"comments":0,"created_at":"2015-07-06T18:57:41Z","updated_at":"2015-07-22T06:45:26Z","closed_at":"2015-07-06T18:57:51Z","pull_request":{"url":"https://api.github.com/repos/tf/pr_log_test_fixture/pulls/1","html_url":"https://github.com/tf/pr_log_test_fixture/pull/1","diff_url":"https://github.com/tf/pr_log_test_fixture/pull/1.diff","patch_url":"https://github.com/tf/pr_log_test_fixture/pull/1.patch"},"body":"The
+        file only contains a comment though.","score":1.0}]}'
+    http_version: 
+  recorded_at: Sat, 25 Jul 2015 15:25:34 GMT
+recorded_with: VCR 2.9.3

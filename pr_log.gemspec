@@ -22,8 +22,12 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'thor'
   spec.add_dependency 'octokit'
+  spec.add_dependency 'virtus'
 
   spec.add_development_dependency 'bundler', '~> 1.10'
   spec.add_development_dependency 'rake', '~> 10.0'
-  spec.add_development_dependency 'rspec'
+  spec.add_development_dependency 'rspec', '~> 3.0'
+  spec.add_development_dependency 'webmock', '~> 1.21'
+  spec.add_development_dependency 'vcr', '~> 2.9'
+  spec.add_development_dependency 'unindent', '~> 1.0'
 end
