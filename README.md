@@ -107,7 +107,7 @@ The following configuration options are available:
 
 - `milestone_format`: Template string used to derive a milestone name
   from the current gem version. The strings `%{major}`, `%{minor}` and
-  `%{path}` are replaces with the corresponding numeric component of
+  `%{patch}` are replaces with the corresponding numeric component of
   the current version. Default value: `v%{major}.%{minor}`.
 
 ### Label Prefixes
