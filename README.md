@@ -32,23 +32,15 @@ limit GitHub API requests to relevant data.
 Markdown is the de facto standard for formatting files to be
 displayed on GitHub.
 
-## Features
-
-- Plays nicely with existing hand written changelog content
-- Fetches pull requests based on version milestone
-- Detects pull requests already mentioned in the changelog
-- Inserts links to GitHub pages of referenced pull requests
-- Prefixes based on pull request labels ("Bug fix" etc.)
-- Customizable entry template
-
 ## Installation
 
 Install the command line tool:
 
     $ gem install pr_log
 
-Generate a [personal access token]() and place it in a `.pr_log.yml`
-file in your home directory:
+Generate a
+[personal access token](https://help.github.com/articles/creating-an-access-token-for-command-line-use/)
+and place it in a `.pr_log.yml` file in your home directory:
 
     # ~/.pr_log.yml
     access_token: "xxx"
@@ -65,7 +57,10 @@ By default, this creates entries of the form:
     - Title of the pull request
       ([#100](https://github.com/some/repository/pull/100)))
 
-## Auto Detecting Configuration
+If a pull request URL is already mentioned in the changelog, no entry
+will be created.
+
+### Convention over Configuration
 
 The `fetch` command can also be invoked without command line options:
 
@@ -78,31 +73,67 @@ PrLog tries to derive defaults from gemspec information:
 - PrLog constructs a milestone name of the form `v%{major}.%{minor}`
   from the current gem version.
 
-## Configuration
+### Configuration
 
-To override PrLog's default configuration place a `.pr_log.yml` file
-inside your project's root directory:
+To override PrLog's default configuration you can either pass command
+line options or place a `.pr_log.yml` file inside your project's root
+or your home directory:
 
     # .pr_log.yml
     changelog_file: "HISTORY.md"
-    insert_after: # HISTORY""
 
-See the configuration object documentation for a complete list of
-configuration options.
+The following configuration options are available:
+
+- `access_token`: Personal access token to use for GitHub API
+  requests.
+
+- `changelog_file`: Relative path to the changelog file.
+
+- `entry_template`: Template string used for new changelog
+  entries. All fields from the
+  [issue search response](https://developer.github.com/v3/search/#search-issues)
+  can be used as interpolations.
+
+- `github_repository`: Name of the GitHub repository of the form
+  `user/repository`.
+
+- `insert_after`: Regular expression or string matching the line
+  inside the changelog after which new items shall be inserted.
+
+- `label_prefixes`: A hash mapping GitHub label names to title
+  prefixes for changelog entries. See below for details.
+
+- `milestone`: Name of the milestone filter fetched pull requests by.
+
+- `milestone_format`: Template string used to derive a milestone name
+  from the current gem version. The strings `%{major}`, `%{minor}` and
+  `%{path}` are replaces with the corresponding numeric component of
+  the current version. Default value: `v%{major}.%{minor}`.
+
+### Label Prefixes
+
+Items for pull requests with certain labels can be prefixed with a
+string automatically. To add a "Bug fix:" prefix to all pull requests
+with the label `bug`, add the following lines to your configuration file:
+
+    # pr_log.yml
+    label_prefixes:
+      bug: "Bug fix:"
 
 ## Development
 
 After checking out the repo, run `bin/setup` to install
-dependencies. Then, run `rake rspec` to run the tests. You can also
-run `bin/console` for an interactive prompt that will allow you to
-experiment. Run `bundle exec prlog` to use the gem in this directory,
-ignoring other installed copies of this gem.
+dependencies. You can also run `bin/console` for an interactive prompt
+that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake
-install`. To release a new version, update the version number in
-`version.rb`, and then run `bundle exec rake release`, which will
-create a git tag for the version, push git commits and tags, and push
-the `.gem` file to [rubygems.org](https://rubygems.org).
+### Running the Test Suite
+
+Ensure the environment variable `PR_LOG_FIXTURE_OAUTH_TOKEN` is set to
+a valid GitHub access token. Then run `bin/rspec`. The test suite uses
+[VCR](https://github.com/vcr/vcr) to record and replay requests to the
+GitHub API. Fixture data used by the test suite comes from the
+[tf/pr_log_test_fixture](https://github.com/tf/pr_log_test_fixture)
+repository.
 
 ## Contributing
 
