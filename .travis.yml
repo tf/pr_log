@@ -1,4 +1,15 @@
 language: ruby
 rvm:
-  - 1.9.3
+- 1.9.3
+- 2.1.1
+
+# User container based travis infrastructure which allows caching
+# features for open source projects.
+sudo: false
+cache: bundler
+
 before_install: gem install bundler -v 1.10.5
+
+env:
+  global:
+    - PR_LOG_FIXTURE_OAUTH_TOKEN=8909728af9171b43308994050f0c6f57994ace5f
