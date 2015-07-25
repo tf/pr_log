@@ -1,5 +1,10 @@
 # PR Log
 
+[![Gem Version](https://badge.fury.io/rb/pr_log.svg)](http://badge.fury.io/rb/pr_log)
+[![Build Status](https://travis-ci.org/tf/pr_log.svg?branch=master)](https://travis-ci.org/tf/pr_log)
+[![Test Coverage](https://codeclimate.com/github/tf/pr_log/badges/coverage.svg)](https://codeclimate.com/github/tf/pr_log)
+[![Code Climate](https://codeclimate.com/github/tf/pr_log/badges/gpa.svg)](https://codeclimate.com/github/tf/pr_log)
+
 Turn GitHub pull requests into changelog entries.
 
 ## Assumptions
