@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['mail@timfischbach.de']
 
   spec.summary       = 'Turn GitHub pull requests into changelog entries'
-  spec.homepage      = 'http://github/tf/pr_log'
+  spec.homepage      = 'https://github.com/tf/pr_log'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
