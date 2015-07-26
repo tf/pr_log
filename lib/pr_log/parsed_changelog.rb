@@ -1,6 +1,6 @@
 module PrLog
   # Get mentioned issues from a changelog
-  class Changelog
+  class ParsedChangelog
     def initialize(text, options = {})
       @text = text
       @github_repository = options.fetch(:github_repository)

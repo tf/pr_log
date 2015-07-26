@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 module PrLog
-  describe Changelog do
+  describe ParsedChangelog do
     describe '#mentioned_issue_numbers' do
       it 'returns array of issue numbers as strings' do
-        changelog = Changelog.new(<<-TEXT.unindent, github_repository: 'some/repo')
+        changelog = ParsedChangelog.new(<<-TEXT.unindent, github_repository: 'some/repo')
           # CHANGELOG
 
           ## Unreleased Changes
@@ -21,7 +21,7 @@ module PrLog
       end
 
       it 'ignores mentioned prs of other repositories' do
-        changelog = Changelog.new(<<-TEXT.unindent, github_repository: 'some/repo')
+        changelog = ParsedChangelog.new(<<-TEXT.unindent, github_repository: 'some/repo')
           # CHANGELOG
 
           ## Unreleased Changes

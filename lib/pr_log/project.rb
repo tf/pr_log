@@ -2,7 +2,7 @@ module PrLog
   # Parse files from the local project directory
   class Project < Struct.new(:config)
     def issue_numbers_mentioned_in_changelog
-      changelog.mentioned_issue_numbers
+      parsed_changelog.mentioned_issue_numbers
     end
 
     def milestone
@@ -24,9 +24,9 @@ module PrLog
                            config.access_token)
     end
 
-    def changelog
-      Changelog.new(File.read(config.changelog_file),
-                    github_repository: github_repository_name)
+    def parsed_changelog
+      ParsedChangelog.new(File.read(config.changelog_file),
+                          github_repository: github_repository_name)
     end
 
     def gemspec
