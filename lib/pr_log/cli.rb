@@ -22,17 +22,19 @@ module PrLog
     method_option(:milestone_format,
                   desc: 'Pattern to derive milestone from gem version')
     def fetch
-      config = Configuration.setup(options)
-      project = Project.new(config)
+      FetchCommand.perform(options) do |command|
+        command.on(:fetching) do |milestone, github_repository_name|
+          say_status(:fetching,
+                     "pull requests for milestone #{milestone} " \
+                     "from #{github_repository_name}")
+        end
 
-      say_status(:fetching,
-                 "pull requests for milestone #{project.milestone} " \
-                 "from #{project.github_repository_name}")
-
-      say_status(:inserting, "entries into #{config.changelog_file}")
-
-      injector = Injector.new(config.changelog_file)
-      injector.insert_after(config.insert_after, project.new_changelog_entries)
+        command.on(:inserting) do |pull_requests, changelog_file|
+          say_status(:inserting,
+                     "#{pull_requests.size} entries " \
+                     "into #{changelog_file}")
+        end
+      end
     rescue Error => e
       say_status(:error, e.message)
     end
