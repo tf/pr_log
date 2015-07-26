@@ -189,4 +189,19 @@ RSpec.describe('fetching new changelog entries',
         ([#3](https://github.com/#{fixture_repository}/pull/3))
     TEXT
   end
+
+  it 'fails with helpful message if insertion point is not found' do
+    fixture_file('CHANGELOG.md', <<-TEXT)
+      # CHANGELOG
+    TEXT
+
+    expect {
+      pr_log(:fetch,
+             quiet: false,
+             access_token: fixture_oauth_token,
+             github_repository: fixture_repository,
+             milestone: 'v1.1.1',
+             insert_after: "## Not there\n")
+    }.to output(/Insert point not found in CHANGELOG.md/).to_stdout
+  end
 end

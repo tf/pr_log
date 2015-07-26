@@ -1,7 +1,7 @@
 module Support
   module CliHelper
     def pr_log(command, options)
-      cli = PrLog::Cli.new([], options.merge(quiet: true))
+      cli = PrLog::Cli.new([], { quiet: true }.merge(options))
       cli.invoke(command)
     end
   end

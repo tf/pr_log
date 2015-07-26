@@ -3,8 +3,6 @@ require 'thor'
 module PrLog
   # The main command line interface
   class Cli < Thor
-    include Thor::Actions
-
     desc 'fetch', 'Insert changelog entries for new pull requests'
     method_option(:changelog_file,
                   aliases: '-c',
@@ -28,12 +26,15 @@ module PrLog
       project = Project.new(config)
 
       say_status(:fetching,
-                 "pull requests for milestone #{project.milestone}" \
+                 "pull requests for milestone #{project.milestone} " \
                  "from #{project.github_repository_name}")
 
-      insert_into_file(config.changelog_file, after: config.insert_after) do
-        project.new_changelog_entries
-      end
+      say_status(:inserting, "entries into #{config.changelog_file}")
+
+      injector = Injector.new(config.changelog_file)
+      injector.insert_after(config.insert_after, project.new_changelog_entries)
+    rescue Error => e
+      say_status(:error, e.message)
     end
   end
 end

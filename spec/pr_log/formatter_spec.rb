@@ -46,6 +46,15 @@ module PrLog
           - Some capitalized title (#1)
         TEXT
       end
+
+      it 'returns empty string if no pull requests are passed' do
+        template = "- %{title} (#%{number})\n"
+        formatter = Formatter.new([], template, {})
+
+        result = formatter.entries
+
+        expect(result).to eq('')
+      end
     end
   end
 end

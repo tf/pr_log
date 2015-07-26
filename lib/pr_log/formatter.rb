@@ -5,6 +5,8 @@ module PrLog
                                :label_prefixes)
 
     def entries
+      return '' if pull_requests.empty?
+
       pull_requests.map do |pull_request|
         entry_template % entry_template_data(pull_request)
       end.join.prepend("\n")
