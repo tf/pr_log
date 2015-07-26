@@ -17,6 +17,15 @@ module PrLog
         }.to yield_control
       end
 
+      it 'fails if perform is not implemented' do
+        command = Class.new(Command) do
+        end
+
+        expect {
+          command.perform(changelog_file: 'History.md')
+        }.to raise_error(NotImplementedError)
+      end
+
       it 'provides config to command subclass' do
         command = Class.new(Command) do
           def perform
@@ -28,7 +37,7 @@ module PrLog
 
         expect(result).to eq('History.md')
       end
-
+      
       it 'provides project to command subclass' do
         command = Class.new(Command) do
           def perform

@@ -36,7 +36,7 @@ module PrLog
         end
       end
     rescue Error => e
-      say_status(:error, e.message)
+      say_status(:error, e.message, :red)
     end
   end
 end
