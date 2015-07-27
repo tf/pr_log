@@ -16,4 +16,7 @@ module PrLog
 
   class NonGithubHomepage < Error
   end
+
+  class NoPullRequestsForMilestone < Error
+  end
 end

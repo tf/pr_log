@@ -9,10 +9,21 @@ module PrLog
     end
 
     def pull_requests_with_milestone(milestone)
-      get_issues("repo:#{@name} type:pr is:merged milestone:#{milestone}")
+      fail_if_empty(get_issues(milestone_query(milestone)))
     end
 
     private
+
+    def milestone_query(milestone)
+      "repo:#{@name} type:pr is:merged milestone:#{milestone}"
+    end
+
+    def fail_if_empty(result)
+      return result if result.any?
+
+      fail(NoPullRequestsForMilestone,
+           'No pull requests for milestone')
+    end
 
     def get_issues(query)
       @client.search_issues(query, per_page: 1000)['items'].map(&:to_hash)

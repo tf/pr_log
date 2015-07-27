@@ -5,15 +5,7 @@ RSpec.describe('fetching new changelog entries',
                vcr: :once,
                fixture_files: true) do
 
-  let(:fixture_oauth_token) do
-    ENV.fetch('PR_LOG_FIXTURE_OAUTH_TOKEN') do
-      fail('Environment variable PR_LOG_FIXTURE_OAUTH_TOKEN must be defined.')
-    end
-  end
-
-  let(:fixture_repository) do
-    ENV.fetch('PR_LOG_FIXTURE_REPOSITORY', 'tf/pr_log_test_fixture')
-  end
+  include_context 'github fixture'
 
   let(:fixture_version) do
     '1.1.0'
