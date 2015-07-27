@@ -4,4 +4,7 @@ module PrLog
 
   class InsertPointNotFound < Error
   end
+
+  class ChangelogFileNotFound < Error
+  end
 end

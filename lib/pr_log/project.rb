@@ -27,6 +27,9 @@ module PrLog
     def parsed_changelog
       ParsedChangelog.new(File.read(config.changelog_file),
                           github_repository: github_repository_name)
+    rescue Errno::ENOENT
+      raise(ChangelogFileNotFound,
+            "Could not find '#{config.changelog_file}' file.")
     end
 
     def gemspec

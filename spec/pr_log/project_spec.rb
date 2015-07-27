@@ -20,6 +20,16 @@ module PrLog
 
         expect(result).to eq([1])
       end
+
+      it 'raises ChangelogFileNotFound if changelog file is missing' do
+        config = Configuration.new(changelog_file: 'HISTORY.md',
+                                   github_repository: 'some/repo')
+        project = Project.new(config)
+
+        expect {
+          project.issue_numbers_mentioned_in_changelog
+        }.to raise_error(ChangelogFileNotFound)
+      end
     end
   end
 end

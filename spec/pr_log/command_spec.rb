@@ -37,7 +37,7 @@ module PrLog
 
         expect(result).to eq('History.md')
       end
-      
+
       it 'provides project to command subclass' do
         command = Class.new(Command) do
           def perform
