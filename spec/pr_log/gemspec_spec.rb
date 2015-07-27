@@ -50,14 +50,6 @@ module PrLog
 
         expect(result).to eq(nil)
       end
-
-      it 'returns nil if no gemspec exists' do
-        gemspec = Gemspec.new(nil, '')
-
-        result = gemspec.github_repository
-
-        expect(result).to eq(nil)
-      end
     end
   end
 end

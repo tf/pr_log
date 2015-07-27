@@ -31,5 +31,16 @@ module PrLog
         }.to raise_error(ChangelogFileNotFound)
       end
     end
+
+    describe '#milestone' do
+      it 'raises GemspecNotFound if gemspec file is missing' do
+        config = Configuration.new(github_repository: 'some/repo')
+        project = Project.new(config)
+
+        expect {
+          project.milestone
+        }.to raise_error(GemspecNotFound)
+      end
+    end
   end
 end

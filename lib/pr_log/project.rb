@@ -33,8 +33,13 @@ module PrLog
     end
 
     def gemspec
-      Gemspec.new(Gem::Specification.load(Dir.glob('*.gemspec').first),
+      Gemspec.new(Gem::Specification.load(gemspec_path),
                   config.milestone_format)
+    end
+
+    def gemspec_path
+      Dir.glob('*.gemspec').first ||
+        fail(GemspecNotFound)
     end
   end
 end

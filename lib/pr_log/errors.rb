@@ -7,4 +7,7 @@ module PrLog
 
   class ChangelogFileNotFound < Error
   end
+
+  class GemspecNotFound < Error
+  end
 end

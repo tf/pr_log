@@ -2,8 +2,7 @@ module PrLog
   # Extract default configuration from a gem specification
   class Gemspec < Struct.new(:specification, :milestone_format)
     def github_repository
-      specification &&
-        specification.homepage =~ %r{https?://github.com/} &&
+      specification.homepage =~ %r{https?://github.com/} &&
         specification.homepage.split('github.com/').last
     end
 
