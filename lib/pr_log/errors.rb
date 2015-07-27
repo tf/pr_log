@@ -10,4 +10,10 @@ module PrLog
 
   class GemspecNotFound < Error
   end
+
+  class GithubRepositoryRequired < Error
+  end
+
+  class NonGithubHomepage < Error
+  end
 end

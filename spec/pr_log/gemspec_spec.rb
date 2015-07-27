@@ -41,14 +41,14 @@ module PrLog
         expect(result).to eq('some/repo')
       end
 
-      it 'returns nil if not a github url' do
+      it 'raises NonGithubHomepage if not a github url' do
         other_url = 'https://example.com'
         specification = Gem::Specification.new { |s| s.homepage = other_url }
         gemspec = Gemspec.new(specification, '')
 
-        result = gemspec.github_repository
-
-        expect(result).to eq(nil)
+        expect {
+          gemspec.github_repository
+        }.to raise_error(NonGithubHomepage)
       end
     end
   end

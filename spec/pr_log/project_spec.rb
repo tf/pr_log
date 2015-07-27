@@ -42,5 +42,29 @@ module PrLog
         }.to raise_error(GemspecNotFound)
       end
     end
+
+    describe '#github_repository_name' do
+      context 'without github repository config option' do
+        it 'raises GithubRepositoryRequired if gemspec is missing' do
+          config = Configuration.new
+          project = Project.new(config)
+          fixture_gemspec('test-gem.gemspec',
+                          homepage_url: 'http://example.com')
+
+          expect {
+            project.github_repository_name
+          }.to raise_error(GithubRepositoryRequired)
+        end
+
+        it 'raises GithubRepositoryRequired if gemspec uses non github homepage' do
+          config = Configuration.new
+          project = Project.new(config)
+
+          expect {
+            project.github_repository_name
+          }.to raise_error(GithubRepositoryRequired)
+        end
+      end
+    end
   end
 end

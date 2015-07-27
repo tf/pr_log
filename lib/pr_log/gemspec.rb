@@ -2,8 +2,12 @@ module PrLog
   # Extract default configuration from a gem specification
   class Gemspec < Struct.new(:specification, :milestone_format)
     def github_repository
-      specification.homepage =~ %r{https?://github.com/} &&
-        specification.homepage.split('github.com/').last
+      unless specification.homepage =~ %r{https?://github.com/}
+        fail(NonGithubHomepage,
+             'Gemspec does not have GitHub hompage URL.')
+      end
+
+      specification.homepage.split('github.com/').last
     end
 
     def version_milestone

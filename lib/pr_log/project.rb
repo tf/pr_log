@@ -11,6 +11,12 @@ module PrLog
 
     def github_repository_name
       config.github_repository || gemspec.github_repository
+    rescue GemspecNotFound
+      raise(GithubRepositoryRequired,
+            'Could not derive github repository from gemspec.')
+    rescue NonGithubHomepage
+      raise(GithubRepositoryRequired,
+            'Homepage attribute in gemspec is not a GitHub URL.')
     end
 
     def pull_requests_for_current_milestone
@@ -39,7 +45,7 @@ module PrLog
 
     def gemspec_path
       Dir.glob('*.gemspec').first ||
-        fail(GemspecNotFound)
+        fail(GemspecNotFound, 'Gemspec not found.')
     end
   end
 end
