@@ -13,6 +13,15 @@ module PrLog
           github_repository.pull_requests_with_milestone('not-there')
         }.to raise_error(NoPullRequestsForMilestone)
       end
+
+      it 'raises GithubRepositoryNotFound if repository not found' do
+        github_repository = GithubRepository.new('tf/not-there',
+                                                 fixture_oauth_token)
+
+        expect {
+          github_repository.pull_requests_with_milestone(fixture_milestone)
+        }.to raise_error(GithubRepositoryNotFound)
+      end
     end
   end
 end

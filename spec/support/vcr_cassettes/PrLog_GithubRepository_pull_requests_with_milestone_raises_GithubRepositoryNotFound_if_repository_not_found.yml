@@ -1,0 +1,75 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/search/issues?per_page=1000&q=repo:tf/not-there%20type:pr%20is:merged%20milestone:v1.1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 4.0.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Tue, 28 Jul 2015 19:35:18 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '306'
+      Status:
+      - 422 Unprocessable Entity
+      X-Ratelimit-Limit:
+      - '30'
+      X-Ratelimit-Remaining:
+      - '29'
+      X-Ratelimit-Reset:
+      - '1438112178'
+      Cache-Control:
+      - no-cache
+      X-Oauth-Scopes:
+      - ''
+      X-Accepted-Oauth-Scopes:
+      - repo
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 584C43CA:4147:2A455FD:55B7D976
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+    body:
+      encoding: UTF-8
+      string: '{"message":"Validation Failed","errors":[{"message":"The listed users
+        and repositories cannot be searched either because the resources do not exist
+        or you do not have permission to view them.","resource":"Search","field":"q","code":"invalid"}],"documentation_url":"https://developer.github.com/v3/search/"}'
+    http_version: 
+  recorded_at: Tue, 28 Jul 2015 19:35:18 GMT
+recorded_with: VCR 2.9.3

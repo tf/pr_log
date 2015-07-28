@@ -27,6 +27,8 @@ module PrLog
 
     def get_issues(query)
       @client.search_issues(query, per_page: 1000)['items'].map(&:to_hash)
+    rescue Octokit::UnprocessableEntity
+      raise(GithubRepositoryNotFound, 'Github repository not found')
     end
   end
 end

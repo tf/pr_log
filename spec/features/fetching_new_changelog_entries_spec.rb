@@ -11,10 +11,6 @@ RSpec.describe('fetching new changelog entries',
     '1.1.0'
   end
 
-  let(:fixture_milestone) do
-    'v1.1'
-  end
-
   it 'takes configuration via command line' do
     changelog = fixture_file('CHANGELOG.md', <<-TEXT)
       # CHANGELOG

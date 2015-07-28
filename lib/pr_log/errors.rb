@@ -19,4 +19,7 @@ module PrLog
 
   class NoPullRequestsForMilestone < Error
   end
+
+  class GithubRepositoryNotFound < Error
+  end
 end
