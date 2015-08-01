@@ -1,6 +1,8 @@
 module PrLog
   # Extract default configuration from a gem specification
-  class Gemspec < Struct.new(:specification, :milestone_format)
+  class Gemspec
+    pattr_initialize :specification, :milestone_format
+
     def github_repository
       unless specification.homepage =~ %r{https?://github.com/}
         fail(NonGithubHomepage,

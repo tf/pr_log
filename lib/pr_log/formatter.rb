@@ -1,8 +1,7 @@
 module PrLog
   # Format new pull requests from github search response
-  class Formatter < Struct.new(:pull_requests,
-                               :entry_template,
-                               :label_prefixes)
+  class Formatter
+    pattr_initialize :pull_requests, :entry_template, :label_prefixes
 
     def entries
       return '' if pull_requests.empty?

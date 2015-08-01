@@ -2,8 +2,10 @@ require 'events'
 
 module PrLog
   # Event emitting command base class
-  class Command < Struct.new(:config)
+  class Command
     include Events::Emitter
+
+    pattr_initialize :config
 
     def self.perform(options)
       command = new(Configuration.setup(options))
