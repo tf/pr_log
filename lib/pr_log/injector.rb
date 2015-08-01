@@ -1,9 +1,12 @@
 module PrLog
   # Injects text into a file
-  class Injector < Struct.new(:destination_file)
+  class Injector
+    pattr_initialize :destination_file
+
     def insert_after(line, text)
       unless replace!(/#{line}/, '\0' + text)
-        fail(InsertPointNotFound, "Insert point not found in #{destination_file}.")
+        fail(InsertPointNotFound,
+             "Insert point not found in #{destination_file}.")
       end
     end
 

@@ -56,7 +56,7 @@ module PrLog
           }.to raise_error(GithubRepositoryRequired)
         end
 
-        it 'raises GithubRepositoryRequired if gemspec uses non github homepage' do
+        it 'raises descriptive error if gemspec uses non github homepage' do
           config = Configuration.new
           project = Project.new(config)
 

@@ -1,6 +1,8 @@
 module PrLog
   # Parse files from the local project directory
-  class Project < Struct.new(:config)
+  class Project
+    pattr_initialize :config
+
     def issue_numbers_mentioned_in_changelog
       parsed_changelog.mentioned_issue_numbers
     end

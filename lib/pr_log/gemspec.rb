@@ -1,6 +1,8 @@
 module PrLog
   # Extract default configuration from a gem specification
-  class Gemspec < Struct.new(:specification, :milestone_format)
+  class Gemspec
+    pattr_initialize :specification, :milestone_format
+
     def github_repository
       unless specification.homepage =~ %r{https?://github.com/}
         fail(NonGithubHomepage,
@@ -22,7 +24,6 @@ module PrLog
       [:major, :minor, :patch]
         .each_with_index
         .each_with_object({}) do |(name, index), result|
-
         result[name] = components[index]
       end
     end
