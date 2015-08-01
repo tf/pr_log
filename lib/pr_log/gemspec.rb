@@ -22,7 +22,6 @@ module PrLog
       [:major, :minor, :patch]
         .each_with_index
         .each_with_object({}) do |(name, index), result|
-
         result[name] = components[index]
       end
     end

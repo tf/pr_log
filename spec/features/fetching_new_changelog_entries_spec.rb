@@ -4,7 +4,6 @@ RSpec.describe('fetching new changelog entries',
                cli: true,
                vcr: :once,
                fixture_files: true) do
-
   include_context 'github fixture'
 
   let(:fixture_version) do
@@ -127,7 +126,7 @@ RSpec.describe('fetching new changelog entries',
     TEXT
   end
 
-  it 'does not insert items for pull requests already mentioned in the changelog' do
+  it 'does not insert items for pull requests mentioned in the changelog' do
     changelog = fixture_file('CHANGELOG.md', <<-TEXT)
       # CHANGELOG
 

@@ -3,7 +3,8 @@ module PrLog
   class Injector < Struct.new(:destination_file)
     def insert_after(line, text)
       unless replace!(/#{line}/, '\0' + text)
-        fail(InsertPointNotFound, "Insert point not found in #{destination_file}.")
+        fail(InsertPointNotFound,
+             "Insert point not found in #{destination_file}.")
       end
     end
 
