@@ -29,7 +29,7 @@ module PrLog
     end
 
     def format_title(pull_request)
-      pull_request[:title].capitalize
+      pull_request[:title]
     end
   end
 end
