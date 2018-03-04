@@ -33,5 +33,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'vcr', '~> 2.9'
   spec.add_development_dependency 'unindent', '~> 1.0'
   spec.add_development_dependency 'simplecov'
-  spec.add_development_dependency 'rubocop', '~> 0.29.1'
+  spec.add_development_dependency 'rubocop', '>= 0.47.0'
 end
