@@ -6,7 +6,7 @@ VCR.configure do |config|
 
   config.filter_sensitive_data('<ACCESS_TOKEN>') do
     ENV.fetch('PR_LOG_FIXTURE_OAUTH_TOKEN') do
-      fail('Environment variable PR_LOG_FIXTURE_OAUTH_TOKEN must be defined.')
+      raise('Environment variable PR_LOG_FIXTURE_OAUTH_TOKEN must be defined.')
     end
   end
 

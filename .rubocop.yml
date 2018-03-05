@@ -1,7 +1,3 @@
-# Inherit from Hound default configuration so we can perform the same
-# checks locally.
-inherit_from: ./.rubocop_hound.yml
-
 # Use double quotes only for interpolation.
 Style/StringLiterals:
   EnforcedStyle: single_quotes
@@ -9,3 +5,25 @@ Style/StringLiterals:
 # Place dots at the beginning of multiline method calls.
 Layout/DotPosition:
   EnforcedStyle: leading
+
+# Use brackets for symbol array
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+# Allow using {} when chaining methods
+Style/BlockDelimiters:
+  EnforcedStyle: braces_for_chaining
+
+# Allow %{} tokens in format strings
+Style/FormatStringToken:
+  EnforcedStyle: template
+
+# Longs tests and gemspecs are ok
+Metrics/BlockLength:
+  ExcludedMethods: ['describe']
+  Exclude:
+    - 'pr_log.gemspec'
+
+# Ignore Rubcop directives at end of line
+Metrics/LineLength:
+  IgnoreCopDirectives: true

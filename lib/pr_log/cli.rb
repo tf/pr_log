@@ -24,19 +24,28 @@ module PrLog
     def fetch
       FetchCommand.perform(options) do |command|
         command.on(:fetching) do |milestone, github_repository_name|
-          say_status(:fetching,
-                     "pull requests for milestone #{milestone} " \
-                     "from #{github_repository_name}")
+          say_fetching(milestone, github_repository_name)
         end
 
         command.on(:inserting) do |pull_requests, changelog_file|
-          say_status(:inserting,
-                     "#{pull_requests.size} entries " \
-                     "into #{changelog_file}")
+          say_inserting(pull_requests, changelog_file)
         end
       end
     rescue Error => e
       say_status(:error, e.message, :red)
+    end
+
+    private
+
+    def say_fetching(milestone, github_repository_name)
+      say_status(:fetching,
+                 "pull requests for milestone #{milestone} " \
+                 "from #{github_repository_name}")
+    end
+
+    def say_inserting(pull_requests, changelog_file)
+      say_status(:inserting,
+                 "#{pull_requests.size} entries into #{changelog_file}")
     end
   end
 end

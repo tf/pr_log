@@ -1,9 +1,9 @@
 require 'simplecov'
 SimpleCov.start
 
-$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+$LOAD_PATH.unshift File.expand_path('../lib', __dir__)
 require 'pr_log'
 
-Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each do |file|
+Dir[File.join(__dir__, 'support/**/*.rb')].each do |file|
   require(file)
 end
