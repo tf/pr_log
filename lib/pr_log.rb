@@ -13,5 +13,6 @@ require 'pr_log/parsed_changelog'
 require 'pr_log/project'
 require 'pr_log/version'
 
+# Turn GitHub pull requests into changelog entries.
 module PrLog
 end

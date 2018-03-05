@@ -1,7 +1,7 @@
 RSpec.shared_context 'github fixture' do
   let(:fixture_oauth_token) do
     ENV.fetch('PR_LOG_FIXTURE_OAUTH_TOKEN') do
-      fail('Environment variable PR_LOG_FIXTURE_OAUTH_TOKEN must be defined.')
+      raise('Environment variable PR_LOG_FIXTURE_OAUTH_TOKEN must be defined.')
     end
   end
 

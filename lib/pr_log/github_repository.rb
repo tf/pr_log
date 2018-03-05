@@ -21,8 +21,8 @@ module PrLog
     def fail_if_empty(result)
       return result if result.any?
 
-      fail(NoPullRequestsForMilestone,
-           'No pull requests for milestone')
+      raise(NoPullRequestsForMilestone,
+            'No pull requests for milestone')
     end
 
     def get_issues(query)

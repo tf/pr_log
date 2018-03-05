@@ -14,7 +14,7 @@ module PrLog
     end
 
     def perform
-      fail(NotImplementedError)
+      raise(NotImplementedError)
     end
 
     private

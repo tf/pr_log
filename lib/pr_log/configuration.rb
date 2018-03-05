@@ -49,6 +49,6 @@ module PrLog
     CONFIG_FILE_NAMES = [
       "#{ENV['HOME']}/.pr_log.yml",
       '.pr_log.yml'
-    ]
+    ].freeze
   end
 end

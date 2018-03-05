@@ -5,8 +5,8 @@ module PrLog
 
     def github_repository
       unless specification.homepage =~ %r{https?://github.com/}
-        fail(NonGithubHomepage,
-             'Gemspec does not have GitHub hompage URL.')
+        raise(NonGithubHomepage,
+              'Gemspec does not have GitHub hompage URL.')
       end
 
       specification.homepage.split('github.com/').last

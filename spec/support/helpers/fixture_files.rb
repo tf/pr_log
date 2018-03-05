@@ -6,7 +6,7 @@ module Support
     DEFAULT_GEMSPEC_OPTIONS = {
       version: '0.0.1',
       homepage: 'http://example.com'
-    }
+    }.freeze
 
     def fixture_file(path, contents)
       File.write(path, contents.unindent)
@@ -14,7 +14,7 @@ module Support
     end
 
     def fixture_gemspec(path, options)
-      fixture_path = File.expand_path('../../fixtures/gemspec', __FILE__)
+      fixture_path = File.expand_path('../fixtures/gemspec', __dir__)
       contents = File.read(fixture_path)
       contents = contents % DEFAULT_GEMSPEC_OPTIONS.merge(options)
       fixture_file(path, contents)

@@ -5,8 +5,8 @@ module PrLog
 
     def insert_after(line, text)
       unless replace!(/#{line}/, '\0' + text)
-        fail(InsertPointNotFound,
-             "Insert point not found in #{destination_file}.")
+        raise(InsertPointNotFound,
+              "Insert point not found in #{destination_file}.")
       end
     end
 

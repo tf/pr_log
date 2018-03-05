@@ -6,9 +6,9 @@ module PrLog
     def entries
       return '' if pull_requests.empty?
 
-      pull_requests.map do |pull_request|
+      pull_requests.map { |pull_request|
         entry_template % entry_template_data(pull_request)
-      end.join.prepend("\n")
+      }.join.prepend("\n")
     end
 
     private
@@ -23,9 +23,9 @@ module PrLog
     end
 
     def label_prefix(pull_request)
-      pull_request.fetch(:labels, []).map do |label|
+      pull_request.fetch(:labels, []).map { |label|
         label_prefixes[label[:name].to_s]
-      end.compact.first
+      }.compact.first
     end
 
     def format_title(pull_request)

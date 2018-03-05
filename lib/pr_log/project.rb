@@ -13,7 +13,6 @@ module PrLog
 
     def github_repository_name
       config.github_repository || gemspec.github_repository
-
     rescue GemspecNotFound
       raise(GithubRepositoryRequired,
             'Could not derive github repository from gemspec.')
@@ -48,7 +47,7 @@ module PrLog
 
     def gemspec_path
       Dir.glob('*.gemspec').first ||
-        fail(GemspecNotFound, 'Gemspec not found.')
+        raise(GemspecNotFound, 'Gemspec not found.')
     end
   end
 end
