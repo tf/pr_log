@@ -1,7 +1,7 @@
 language: ruby
 rvm:
-- 1.9.3
 - 2.1.1
+- 2.5.0
 
 # User container based travis infrastructure which allows caching
 # features for open source projects.
