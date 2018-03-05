@@ -1,7 +1,7 @@
 language: ruby
 rvm:
-- 1.9.3
 - 2.1.1
+- 2.5.0
 
 # User container based travis infrastructure which allows caching
 # features for open source projects.
@@ -10,11 +10,15 @@ cache: bundler
 
 before_install: gem install bundler -v 1.10.5
 
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+
 env:
   global:
     - PR_LOG_FIXTURE_OAUTH_TOKEN=8909728af9171b43308994050f0c6f57994ace5f
 
-addons:
-  code_climate:
-    repo_token:
-      secure: "aQtvo+k13pyGi4Hi/7/Hx/wIv5lAlZ0AXrMNy0A4mPF4en6y2jW9yiO0pSMNBAPRmiFrDstarW4IcdtHVQ4vT6XBvcmu4DmYBdfcutrhBBXFXx2IOMtqKpGAib42HQW7lgSwVh2nPTqyVh2fw8TnEYk7Mr1cFK9zQXasFll/yCYtRHquDJxanwYyISw6q8YN7Z9e5M8Sv2Mc7Bu2qtx6QXkEEd8JvxtvXT2vQBdGrzH3Y+gC9hKr2BgJnV9of2Ofu0oFY958nlqxj3dSj9m64wt8xHt4W2fU4FNv4lPCHHotQdWTY2ugzdOA6GhSf76hOO5t/0lQ44eJySgmIzTIWWFUCAzvWpOv7Wj4jrMeoF+MxzQmEu7rUfuu/hFR+dEliQouiMAhBGy6cP8PtzHrUcf3cYaW5GcE57RU/FBb0cyM6QG2vDK0C12bjzpuLrv9dkfizlxPZnwdiuOQWG45sbZgKWv212Dj34jT2rDpfCfovbpse72Pi0FSN4Q04CvHkB/ITP6LGKF5NCmLAewJKOsjUbciPgX7PxnY9ieFLgadenfFQARpRCZaw5Gp7ZEJq+8LAFokW9lDu2HdByRGLDXvv+6yve+Rt5bCT5T+ALboGr0FXaZJ/YCAdL4mUudY/5rW36ZyPQrPpQnnxSe62GzHKCdJhtbhpaEIOubcScQ="

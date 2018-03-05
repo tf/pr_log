@@ -1,4 +1,5 @@
 require 'unindent'
+require 'tmpdir'
 
 module Support
   module FixtureFilesHelper
