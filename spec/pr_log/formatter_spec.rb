@@ -33,20 +33,6 @@ module PrLog
         TEXT
       end
 
-      it 'turns title into lower case sentence' do
-        data = [{ title: 'Some Capitalized Title',
-                  number: 1 }]
-        template = "- %{title} (#%{number})\n"
-        formatter = Formatter.new(data, template, {})
-
-        result = formatter.entries
-
-        expect(result).to eq(<<-TEXT.unindent)
-
-          - Some capitalized title (#1)
-        TEXT
-      end
-
       it 'returns empty string if no pull requests are passed' do
         template = "- %{title} (#%{number})\n"
         formatter = Formatter.new([], template, {})
