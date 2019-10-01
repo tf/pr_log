@@ -8,8 +8,6 @@ rvm:
 sudo: false
 cache: bundler
 
-before_install: gem install bundler -v 1.10.5
-
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
@@ -21,4 +19,3 @@ after_script:
 env:
   global:
     - PR_LOG_FIXTURE_OAUTH_TOKEN=8909728af9171b43308994050f0c6f57994ace5f
-
