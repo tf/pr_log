@@ -93,6 +93,7 @@ The following configuration options are available:
   entries. All fields from the
   [issue search response](https://developer.github.com/v3/search/#search-issues)
   can be used as interpolations.
+  Default value: `- %{title} ([#%{number}](%{html_url}))`. Use `.` for nested fields (e.g. `%{user.login}`).
 
 - `github_repository`: Name of the GitHub repository of the form
   `user/repository`.

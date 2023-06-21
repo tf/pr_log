@@ -33,3 +33,24 @@ module PrLog
     end
   end
 end
+
+class String
+  alias old_interpolation %
+  def %(x)
+    if x.is_a? Hash
+      self.scan(/(?<=%{)[^}]*(?=})/).inject(self) do |result, match|
+        keys = match.split('.').map(&:to_sym)
+        begin
+          value = x.dig(*keys)
+        rescue => error
+          # what should do here ?
+        ensure
+          result = result.sub(/%{[^}]*}/, value.to_s)
+        end
+        result
+      end
+    else
+      old_interpolation x
+    end
+  end
+end
