@@ -126,6 +126,7 @@ with the label `bug`, add the following lines to your configuration file:
 After checking out the repo, run `bin/setup` to install
 dependencies. You can also run `bin/console` for an interactive prompt
 that will allow you to experiment.
+You can then use `rake install` to install the gem locally.
 
 ### Running the Test Suite
 
