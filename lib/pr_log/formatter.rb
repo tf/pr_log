@@ -7,11 +7,25 @@ module PrLog
       return '' if pull_requests.empty?
 
       pull_requests.map { |pull_request|
-        entry_template % entry_template_data(pull_request)
+        apply_template(entry_template, entry_template_data(pull_request))
       }.join.prepend("\n")
     end
 
     private
+
+    def apply_template(template, template_data)
+      template.scan(/(?<=%{)[^}]*(?=})/).inject(template) do |result, match|
+        keys = match.split('.').map(&:to_sym)
+        begin
+          value = template_data.dig(*keys)
+        rescue => error
+          # should never happen
+        ensure
+          result = result.sub(/%{[^}]*}/, value.to_s)
+        end
+        result
+      end
+    end
 
     def entry_template_data(pull_request)
       pull_request.merge(title: prefixed_title(pull_request))
@@ -30,27 +44,6 @@ module PrLog
 
     def format_title(pull_request)
       pull_request[:title]
-    end
-  end
-end
-
-class String
-  alias old_interpolation %
-  def %(x)
-    if x.is_a? Hash
-      self.scan(/(?<=%{)[^}]*(?=})/).inject(self) do |result, match|
-        keys = match.split('.').map(&:to_sym)
-        begin
-          value = x.dig(*keys)
-        rescue => error
-          # what should do here ?
-        ensure
-          result = result.sub(/%{[^}]*}/, value.to_s)
-        end
-        result
-      end
-    else
-      old_interpolation x
     end
   end
 end
