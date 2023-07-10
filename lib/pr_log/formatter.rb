@@ -7,11 +7,26 @@ module PrLog
       return '' if pull_requests.empty?
 
       pull_requests.map { |pull_request|
-        entry_template % entry_template_data(pull_request)
+        apply_template(entry_template, entry_template_data(pull_request))
       }.join.prepend("\n")
     end
 
     private
+
+    def apply_template(template, template_data)
+      template.scan(/(?<=%{)[^}]*(?=})/).inject(template) do |result, match|
+        keys = match.split('.').map(&:to_sym)
+
+        begin
+          value = template_data.dig(*keys)
+        rescue StandardError
+          raise(InvalidInterpolation,
+                "%{#{match}} is not a valid interpolation pattern")
+        end
+
+        result.sub(/%{[^}]*}/, value.to_s)
+      end
+    end
 
     def entry_template_data(pull_request)
       pull_request.merge(title: prefixed_title(pull_request))

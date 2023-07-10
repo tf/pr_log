@@ -93,6 +93,7 @@ The following configuration options are available:
   entries. All fields from the
   [issue search response](https://developer.github.com/v3/search/#search-issues)
   can be used as interpolations.
+  Default value: `- %{title} ([#%{number}](%{html_url}))`. Use `.` for nested fields (e.g. `%{user.login}`).
 
 - `github_repository`: Name of the GitHub repository of the form
   `user/repository`.
@@ -125,6 +126,7 @@ with the label `bug`, add the following lines to your configuration file:
 After checking out the repo, run `bin/setup` to install
 dependencies. You can also run `bin/console` for an interactive prompt
 that will allow you to experiment.
+You can then use `rake install` to install the gem locally.
 
 ### Running the Test Suite
 
