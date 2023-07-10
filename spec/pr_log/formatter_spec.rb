@@ -58,11 +58,9 @@ module PrLog
       end
 
       it 'fails on invalid interpolation pattern' do
-        data = [{ title: 'Some fix',
-                  number: 1,
-                  labels: [{ name: 'bug' }] }]
+        data = [{ title: 'Feature 1' }]
         template = "- %{title} (%{..})\n"
-        formatter = Formatter.new(data, template, 'bug' => 'Bug fix:')
+        formatter = Formatter.new(data, template, {})
 
         expect {
           formatter.entries
