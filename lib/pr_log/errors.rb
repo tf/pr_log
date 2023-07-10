@@ -22,4 +22,7 @@ module PrLog
 
   class GithubRepositoryNotFound < Error
   end
+
+  class InvalidInterpolation < Error
+  end
 end

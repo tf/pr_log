@@ -16,14 +16,15 @@ module PrLog
     def apply_template(template, template_data)
       template.scan(/(?<=%{)[^}]*(?=})/).inject(template) do |result, match|
         keys = match.split('.').map(&:to_sym)
+
         begin
           value = template_data.dig(*keys)
-        rescue => error
-          # should never happen
-        ensure
-          result = result.sub(/%{[^}]*}/, value.to_s)
+        rescue StandardError
+          raise(InvalidInterpolation,
+                "%{#{match}} is not a valid interpolation pattern")
         end
-        result
+
+        result.sub(/%{[^}]*}/, value.to_s)
       end
     end
 
