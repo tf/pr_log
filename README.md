@@ -1,10 +1,7 @@
 # PR Log
 
 [![Gem Version](https://badge.fury.io/rb/pr_log.svg)](http://badge.fury.io/rb/pr_log)
-[![Dependency Status](https://gemnasium.com/tf/pr_log.svg)](https://gemnasium.com/tf/pr_log)
 [![CI](https://github.com/tf/pr_log/actions/workflows/test.yml/badge.svg)](https://github.com/tf/pr_log/actions/workflows/test.yml)
-[![Test Coverage](https://codeclimate.com/github/tf/pr_log/badges/coverage.svg)](https://codeclimate.com/github/tf/pr_log)
-[![Code Climate](https://codeclimate.com/github/tf/pr_log/badges/gpa.svg)](https://codeclimate.com/github/tf/pr_log)
 
 Turn GitHub pull requests into changelog entries.
 
