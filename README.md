@@ -130,10 +130,12 @@ You can then use `rake install` to install the gem locally.
 
 ### Running the Test Suite
 
-Ensure the environment variable `PR_LOG_FIXTURE_OAUTH_TOKEN` is set to
-a valid GitHub access token. Then run `bin/rspec`. The test suite uses
-[VCR](https://github.com/vcr/vcr) to record and replay requests to the
-GitHub API. Fixture data used by the test suite comes from the
+The test suite uses [VCR](https://github.com/vcr/vcr) to record and
+replay requests to the GitHub API. When running against the bundled VCR
+cassettes, no GitHub credentials are required. If you run the tests
+without VCR or re-record the cassettes, set the environment variable
+`PR_LOG_FIXTURE_OAUTH_TOKEN` to a valid GitHub access token. Then run
+`bin/rspec`. Fixture data used by the test suite comes from the
 [tf/pr_log_test_fixture](https://github.com/tf/pr_log_test_fixture)
 repository.
 

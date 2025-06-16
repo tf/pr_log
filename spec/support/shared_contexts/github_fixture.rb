@@ -1,8 +1,10 @@
 RSpec.shared_context 'github fixture' do
   let(:fixture_oauth_token) do
-    ENV.fetch('PR_LOG_FIXTURE_OAUTH_TOKEN') do
-      raise('Environment variable PR_LOG_FIXTURE_OAUTH_TOKEN must be defined.')
+    token = ENV.fetch('PR_LOG_FIXTURE_OAUTH_TOKEN', '<ACCESS_TOKEN>')
+    if token == '<ACCESS_TOKEN>' && !VCR.turned_on?
+      raise('Environment variable PR_LOG_FIXTURE_OAUTH_TOKEN must be defined when VCR is disabled.')
     end
+    token
   end
 
   let(:fixture_repository) do
