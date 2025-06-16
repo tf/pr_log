@@ -21,17 +21,18 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'attr_extras', '~> 4.4'
   spec.add_dependency 'events', '~> 0.9.8'
+  spec.add_dependency 'faraday', '~> 1'
   spec.add_dependency 'octokit', '~> 4.0'
   spec.add_dependency 'thor', '~> 0.19'
   spec.add_dependency 'virtus', '~> 1.0'
 
   spec.add_development_dependency 'bundler', ['>= 1.10', '< 3']
-  spec.add_development_dependency 'rake', '~> 10.0'
+  spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'rubocop', '~> 0.53.0'
   spec.add_development_dependency 'semmy', '~> 1.0'
   spec.add_development_dependency 'simplecov', '~> 0.13.0'
   spec.add_development_dependency 'unindent', '~> 1.0'
   spec.add_development_dependency 'vcr', '~> 2.9'
-  spec.add_development_dependency 'webmock', '~> 1.21'
+  spec.add_development_dependency 'webmock', '~> 3.0'
 end
